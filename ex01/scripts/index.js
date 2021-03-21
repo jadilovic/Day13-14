@@ -3,50 +3,40 @@ var imageText;
 var imageSrc;
 var text;
 
-const containers = document.getElementsByClassName("container");
+const items = document.getElementsByClassName("gallery-item");
 
-for (const container of containers) {
-  container.addEventListener("mouseover", () => {
-    element = document.getElementById("section");
-    imageText = document.getElementById("pic").alt;
-    imageSrc = document.getElementById("pic").src;
-    text = document.getElementById(imageText);
-    });
+for (const item of items) {
+  item.addEventListener("mouseover", () => {
+    element = document.querySelector("image");
+    imageText = document.getElementsByTagName("img").alt;
+    imageSrc = document.getElementsByTagName("img").src;
+    text = document.querySelector(imageText);
+  });
 }
 
-const sections = document.getElementsByClassName("section");
-for(const section of sections){
-    section.addEventListener("mouseover", ()=>{
-    document.querySelector("section").addEventListener("mouseover", mouseOver);
-    document.querySelector("section").addEventListener("mouseout", mouseOut);
+// document.querySelector("image").addEventListener("mouseover", mouseOver);
+// document.querySelector("image").addEventListener("mouseout", mouseOut);
 
-    function mouseOver() {
-        element.classList.toggle("black");
-        text.innerHTML = "<h1>" + imageText + "</h1>";
-      }
-      
-      function mouseOut() {
-        element.classList.toggle("black");
-        text.innerHTML = null;
-      }
-    });
+function mouseOver() {
+  element.classList.toggle("black");
+  text.innerHTML = "<h1>" + imageText + "</h1>";
 }
 
+function mouseOut() {
+  element.classList.toggle("black");
+  text.innerHTML = null;
+}
 
-
-var modalText = document.getElementById("modalText");
+var modalText = document.querySelector("modalText");
 
 // Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the picture that opens the modal
-var picModal = document.getElementById("pic");
+var modal = document.querySelector("myModal");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-picModal.onclick = function () {
+element.onclick = function () {
   modal.style.display = "block";
   modalText.innerHTML = displayModuleHtml(imageSrc, imageText);
 };
